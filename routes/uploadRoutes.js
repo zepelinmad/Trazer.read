@@ -16,7 +16,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Upload route
-router.post('/', upload.single('file'), (req, res) => {
+router.post('/upload', upload.single('file'), (req, res) => {
+
   try {
     const filePath = 'uploads/' + req.file.filename;
     const epub = new EPub(filePath);
