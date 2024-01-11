@@ -35,6 +35,7 @@ app.use(express.json()); // For parsing application/json
 
 // Define static file serving
 app.use(express.static(path.join(__dirname, 'client/build')));
+app.use('/uploads', express.static('uploads'));
 
 // Define routes
 app.get('/', (req, res) => {

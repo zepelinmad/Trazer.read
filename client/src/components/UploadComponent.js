@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function UploadComponent() {
+function UploadComponent({ setEpubUrl }) {
     const [file, setFile] = useState(null);
 
     const handleFileChange = (event) => {
@@ -25,6 +25,8 @@ function UploadComponent() {
             });
             alert('File uploaded successfully');
             console.log(response.data);
+            setEpubUrl(response.data.epubUrl);
+
         } catch (error) {
           console.error('Error uploading file:', error);
           console.log('Error details:', error.response);
@@ -37,13 +39,6 @@ function UploadComponent() {
             <button onClick={handleUpload}>Upload</button>
         </div>
     );
-
-    return (
-      <div className="UploadComponent">
-          <input type="file" onChange={handleFileChange} />
-          <button onClick={handleUpload}>Upload</button>
-      </div>
-  );
 }
 
 export default UploadComponent;

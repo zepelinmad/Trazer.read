@@ -32,3 +32,22 @@
 .UploadComponent button:hover {
   background-color: #45a049;
 }
+
+/* Reader Component Styling */
+.ReaderComponent {
+  width: 100%;      /* Full width of the container */
+  height: 600px;    /* Adjust height as needed */
+  margin: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: auto;   /* In case the content overflows */
+}
+
+/* Ensure the ePub viewer container is visible and properly sized */
+.ePubViewer {
+  width: 100%;
+  height: 100%;
+}
+

@@ -17,8 +17,11 @@ const upload = multer({ storage: storage });
 
 // Upload route
 router.post('/upload', upload.single('file'), (req, res) => {
-
   try {
+    if (!req.file) {
+      throw new Error('File not provided');
+    }
+
     const filePath = 'uploads/' + req.file.filename;
     const epub = new EPub(filePath);
 
@@ -26,13 +29,17 @@ router.post('/upload', upload.single('file'), (req, res) => {
       // EPub is parsed, you can work with its content here
       console.log(epub.metadata); // Accessing metadata as an example
 
-      res.send('File uploaded and parsed successfully.');
+      // Construct the URL for the uploaded file
+      const fileUrl = `${req.protocol}://${req.get('host')}/${filePath}`;
+
+      // Send the file URL as response
+      res.send({ epubUrl: fileUrl });
     });
 
     epub.parse();
   } catch (err) {
-    console.error(err);
-    res.sendStatus(500);
+    console.error('Error in file upload:', err);
+    res.status(500).send({ error: 'Error uploading file' });
   }
 });
 
