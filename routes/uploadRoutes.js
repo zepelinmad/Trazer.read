@@ -29,6 +29,9 @@ router.post('/upload', upload.single('file'), (req, res) => {
       // EPub is parsed, you can work with its content here
       console.log(epub.metadata); // Accessing metadata as an example
 
+       // Set the suggested filename based on the uploaded file's original name
+       res.setHeader('Content-Disposition', `inline; filename="${req.file.originalname}"`);
+
       // Construct the URL for the uploaded file
       const fileUrl = `${req.protocol}://${req.get('host')}/${filePath}`;
 
