@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function UploadComponent({ setEpubUrl }) {
-    const [file, setFile] = useState(null);
+function UploadComponent() {
+    const [file, setFile] = useState(null); // Ensuring file state is defined
 
     const handleFileChange = (event) => {
         setFile(event.target.files[0]);
@@ -25,11 +25,14 @@ function UploadComponent({ setEpubUrl }) {
             });
             alert('File uploaded successfully');
             console.log(response.data);
-            setEpubUrl(response.data.epubUrl);
+
+            // Open the reader in a new tab with the epubUrl
+            const readerUrl = `/reader?epubUrl=${encodeURIComponent(response.data.epubUrl)}`;
+            window.open(readerUrl, '_blank');
 
         } catch (error) {
-          console.error('Error uploading file:', error);
-          console.log('Error details:', error.response);
+            console.error('Error uploading file:', error);
+            console.log('Error details:', error.response);
         }
     };
 
@@ -42,4 +45,3 @@ function UploadComponent({ setEpubUrl }) {
 }
 
 export default UploadComponent;
-
