@@ -61,7 +61,7 @@ function ReaderComponent({ epubUrl }) {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(255, 255, 255, 255)', // Dark overlay, you can change the color and opacity
+    backgroundColor: 'rgba(255, 255, 255, 255)', // White overlay
     pointerEvents: 'none', // Allows interaction with the text underneath
   };
 
