@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Trazer.read/static/css/main.f30ae659.css",
+    "main.js": "/Trazer.read/static/js/main.7f4eea2f.js",
+    "static/js/787.d5fa4d18.chunk.js": "/Trazer.read/static/js/787.d5fa4d18.chunk.js",
+    "index.html": "/Trazer.read/index.html",
+    "main.f30ae659.css.map": "/Trazer.read/static/css/main.f30ae659.css.map",
+    "main.7f4eea2f.js.map": "/Trazer.read/static/js/main.7f4eea2f.js.map",
+    "787.d5fa4d18.chunk.js.map": "/Trazer.read/static/js/787.d5fa4d18.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f30ae659.css",
+    "static/js/main.7f4eea2f.js"
+  ]
+}
