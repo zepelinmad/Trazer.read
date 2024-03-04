@@ -4,6 +4,8 @@ const passport = require('passport');
 const cors = require('cors');
 const path = require('path');
 
+require('dotenv').config();
+
 // Require route modules
 const routes = require('./routes');
 const authRoutes = require('./routes/auth');
@@ -22,7 +24,7 @@ require('./database'); // Database connection
 
 // Express session
 app.use(session({
-  secret: 'trazerReadSuperSecureKey12345',
+  secret: process.env.SUPERKEY,
   resave: false,
   saveUninitialized: false
 }));
