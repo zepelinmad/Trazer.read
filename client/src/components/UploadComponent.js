@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for programmatic navigation
 
 function UploadComponent() {
-    const [file, setFile] = useState(null); // Ensuring file state is defined
+    const [file, setFile] = useState(null);
+    const navigate = useNavigate(); // Initialize the navigate function
 
     const handleFileChange = (event) => {
         setFile(event.target.files[0]);
@@ -26,13 +28,13 @@ function UploadComponent() {
             alert('File uploaded successfully');
             console.log(response.data);
 
-            // Open the reader in a new tab with the epubUrl
-            const readerUrl = `/reader?epubUrl=${encodeURIComponent(response.data.epubUrl)}`;
-            window.open(readerUrl, '_blank');
+            // Assuming response.data contains { bookId: "some-id", epubUrl: "url-to-epub" }
+            // Navigate to the reader with the bookId
+            navigate(`/reader/${response.data.bookId}?epubUrl=${encodeURIComponent(response.data.epubUrl)}`);
 
         } catch (error) {
             console.error('Error uploading file:', error);
-            console.log('Error details:', error.response);
+            alert('Error details:', error.response.data.error);
         }
     };
 

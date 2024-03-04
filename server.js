@@ -8,6 +8,7 @@ const path = require('path');
 const routes = require('./routes');
 const authRoutes = require('./routes/auth');
 const uploadRoutes = require('./routes/uploadRoutes');
+const highlightRoutes = require('./routes/highlightRoutes'); // Highlight routes
 
 // Initialize express app
 const app = express();
@@ -43,9 +44,10 @@ app.get('/', (req, res) => {
 });
 app.use('/api', routes);
 app.use('/auth', authRoutes);
-app.use('/api', uploadRoutes); // Use the new uploadRoutes
+app.use('/api', uploadRoutes); // Upload routes
+app.use('/api', highlightRoutes); // Highlight routes - This line incorporates the highlight functionality
 
-// Catchall handler for React's index.html
+// Catchall handler for React's index.html for SPA routing
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
